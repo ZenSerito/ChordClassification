@@ -3,3 +3,9 @@ venv/
 
 # compiled bytecodes
 __pycache__/
+
+#environment variables
+.env
+
+# databases
+*.db
