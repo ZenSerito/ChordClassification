@@ -7,4 +7,4 @@ python-dotenv
 python-jose
 python-multipart
 sqlalchemy
-uvicorne
+uvicorn
