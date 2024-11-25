@@ -1,19 +1,20 @@
 from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
 
+from backend.app.core.hashing import Hash
 from backend.app.models.user import User as models_User
 from backend.app.schemas.user import User as Schemas_User
 
 
 def create(request: Schemas_User, db: Session):
+    hashed_password = Hash.bcrypt(request.password)
     new_user = models_User(
-        name=request.name,
-        email=request.email,
-        password=request.password,  # password hasn't been hashed
+        name=request.name, email=request.email, password=hashed_password
     )
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
+    print(Hash.verify(hashed_password, request.password))
     return new_user
 
 
