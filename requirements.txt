@@ -1,7 +1,10 @@
-fastapi
-uvicorn
-sqlalchemy
-passlib
 bcrypt
+fastapi
+passlib
+pydantic-settings
+python-dotenv
 python-jose
 python-multipart
+sqlalchemy
+uvicorn
+asyncpg
