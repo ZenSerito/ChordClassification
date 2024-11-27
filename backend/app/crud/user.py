@@ -1,8 +1,11 @@
+from typing import List
+
 from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
 
 from backend.app.core.hashing import Hash
 from backend.app.models.user import User as models_User
+from backend.app.schemas.user import ShowUser as Schemas_Show_User
 from backend.app.schemas.user import User as Schemas_User
 
 
@@ -26,3 +29,13 @@ def read(id: int, db: Session):
             detail=f"User with the id {id} is not available",
         )
     return user
+
+
+def read_all(db: Session) -> List[Schemas_Show_User]:
+    users = db.query(models_User).all()
+    if not users:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"No users currently!!",
+        )
+    return users
