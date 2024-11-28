@@ -1,0 +1,64 @@
+name: chord_classification_app
+description: "A new Flutter project."
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  #icons
+  cupertino_icons: ^1.0.8
+
+  #utils
+  google_fonts: ^6.2.1
+  auto_size_text: ^3.0.0
+  fluttertoast: ^8.2.8
+  skeletonizer: ^1.4.2
+
+  #audio
+  just_audio: ^0.9.42
+
+  #charts
+  syncfusion_flutter_charts: ^27.2.4
+
+  #animations
+  smooth_page_indicator: ^1.2.0+3
+
+  #storage
+  hive_flutter: ^1.1.0
+  path_provider: ^2.1.5
+  flutter_dotenv: ^5.2.1
+
+  #network
+  dio: ^5.7.0
+
+  #images
+  cached_network_image: ^3.4.1
+  flutter_svg: ^2.0.15
+
+  #statemanagement
+  flutter_riverpod: ^2.6.1
+
+  #responsiveness/ Adaptive
+  flutter_screenutil: ^5.9.3
+  flutter_platform_widgets: ^7.0.1
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+# The following section is specific to Flutter packages.
+flutter:
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/
