@@ -34,6 +34,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-# manually adding the react portion to push
-frontend-react/
