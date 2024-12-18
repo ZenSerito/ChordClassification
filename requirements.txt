@@ -1,10 +1,16 @@
 asyncpg
 bcrypt
 fastapi
+librosa
+matplotlib
+pandas
 passlib
 pydantic-settings
 python-dotenv
 python-jose
 python-multipart
+scikit-learn
+scipy
 sqlalchemy
+tensorflow
 uvicorn
