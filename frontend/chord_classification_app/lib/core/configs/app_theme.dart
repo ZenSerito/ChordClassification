@@ -23,7 +23,7 @@ final class AppThemes {
           trackColor:
               WidgetStateColor.resolveWith((states) => AppColors.primary.o5),
           thumbColor:
-              WidgetStateColor.resolveWith((states) => AppColors.black)),
+              WidgetStateColor.resolveWith((states) => AppColors.white)),
       bottomSheetTheme:
           const BottomSheetThemeData(backgroundColor: AppColors.transparent),
       iconButtonTheme: IconButtonThemeData(
@@ -92,7 +92,7 @@ final class AppThemes {
           materialTheme: AppThemes.lightTheme.copyWith(
               cupertinoOverrideTheme: CupertinoThemeData(
                   primaryContrastingColor: AppColors.primary,
-                  scaffoldBackgroundColor: CupertinoColors.lightBackgroundGray,
+                  scaffoldBackgroundColor: AppColors.iosWhite,
                   barBackgroundColor: AppColors.iosWhite,
                   primaryColor: AppColors.primary,
                   applyThemeToAll: true,
