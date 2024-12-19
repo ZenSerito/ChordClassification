@@ -14,7 +14,7 @@
 
 //   AiNotifier() {
 //     try {
-//       Gemini.init(apiKey: "AIzaSyChoAZe4XqvrnRQOXN8VJlNwnZdKtOEOHk");
+//       Gemini.init(apiKey: "");
 //       gemini = Gemini.instance;
 //     } catch (e) {
 //       print("hello $e");
