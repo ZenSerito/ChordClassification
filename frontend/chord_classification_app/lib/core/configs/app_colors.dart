@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-final class AppColors {
+abstract final class AppColors {
+  AppColors._();
   static const Color primary = CupertinoColors.systemBlue;
 
   static const Color transparent = Color.fromARGB(0, 0, 0, 0);

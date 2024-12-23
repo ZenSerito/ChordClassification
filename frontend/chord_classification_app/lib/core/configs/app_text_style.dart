@@ -4,6 +4,8 @@ import '../extensions/int_extensions.dart';
 import '../extensions/textstyle_extensions.dart';
 
 final class AppTextStyles {
+  AppTextStyles._();
+
   /// AppText style for large body text
   static final TextStyle bodyLarge =
       GoogleFonts.workSans(fontWeight: FontWeight.w700).px20;
