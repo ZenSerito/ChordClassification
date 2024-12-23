@@ -1,42 +1,42 @@
 // import 'package:flutter/cupertino.dart';
+// import 'package:flutter_dotenv/flutter_dotenv.dart';
 // import 'package:flutter_gemini/flutter_gemini.dart';
-// import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+// import '../../../../domain/entities/chord_prediction/chord_prediction.dart';
 
 // class AiNotifier extends ChangeNotifier {
 //   final String _requestMessage = """
-      
+//       Summarize this result in bullets in  Markdown format. I have provided
 //        """;
 
 //   bool isAnalyzing = false;
 //   late Gemini gemini;
 
-//   String message = 'Summarize this result in bullets in  Markdown format';
+//   String message = '';
 
 //   AiNotifier() {
 //     try {
-//       Gemini.init(apiKey: "");
+//       Gemini.init(apiKey: dotenv.get('GEMINIKEY'));
 //       gemini = Gemini.instance;
 //     } catch (e) {
 //       print("hello $e");
 //     }
 //   }
 
-//   Future getResponse(AiResponse response) async {
+//   Future getResponse(List<ChordPrediction> predictions) async {
 //     Candidates? aiResponse;
 //     isAnalyzing = true;
+//     final predictionsMessage = predictions.map((e) => e.toString()).join(',');
 //     notifyListeners();
 //     try {
-//       aiResponse = await gemini.prompt(
-//           parts: [Part.text('${response.questions!} $_requestMessage')]);
-//       message = aiResponse?.output;
+//       aiResponse = await gemini
+//           .prompt(parts: [Part.text('$predictionsMessage $_requestMessage')]);
+//       message = aiResponse?.output ?? '';
 //       isAnalyzing = false;
 //       notifyListeners();
-//     } on Exception catch (e) {
+//     } catch (e) {
 //       isAnalyzing = false;
 //       notifyListeners();
-//       print("hello $e");
 //     }
 //   }
 // }
-
-// final aiNotifierProvider = ChangeNotifierProvider((ref) => AiNotifier());

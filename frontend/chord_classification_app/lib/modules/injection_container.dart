@@ -9,9 +9,10 @@ import 'data/datasource/Auth/auth_remote_data_source.dart';
 import 'data/datasource/chord_prediction/chord_prediction_remote_data_source.dart';
 import 'data/repositories/auth/auth_repo_impl.dart';
 import 'data/repositories/chord_prediction/chord_prediction_repo.dart';
-import 'domain/entities/chord_prediction/chord_prediction.dart';
 import 'domain/repositories/auth/auth_repo.dart';
 import 'domain/repositories/chord_prediction/chord_prediction_repo.dart';
+import 'presentation/modules/chord_prediction/providers/chord_controller_notifier.dart';
+import 'presentation/modules/chord_prediction/providers/music_notifier_provider.dart';
 
 //service dependencies
 final storageServiceProvider = Provider<StorageServices>((ref) {
@@ -27,7 +28,7 @@ final apiServiceProvider = Provider<ApiManager>((ref) {
   return ApiManager(ref);
 });
 
-final predictedDataProvider = StateProvider<List<ChordPrediction>>((ref) => []);
+// final predictedDataProvider = StateProvider<List<ChordPrediction>>((ref) => []);
 
 final tokenManagerProvider = Provider<TokenManager>(
     (ref) => TokenManager(ref.read(storageServiceProvider)));
@@ -50,3 +51,6 @@ final chordPredictionRemoteDataSourceProvider =
 
 final chordPredictionRepoProvider = Provider<ChordPredictionRepo>((ref) =>
     ChordPredictionRepoImpl(ref.read(chordPredictionRemoteDataSourceProvider)));
+
+final chordPredictionNotifier = ChangeNotifierProvider<ChordControllerNotifier>(
+    (ref) => ChordControllerNotifier(ref.watch(musicFileProvider)!));

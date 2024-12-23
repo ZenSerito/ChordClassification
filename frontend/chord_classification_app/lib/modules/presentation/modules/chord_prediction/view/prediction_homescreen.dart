@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../core/extensions/extensions.dart';
 import '../../../../../core/services/get.dart';
+import '../../../../injection_container.dart';
 import '../../../widgets/buttons/text_buttons.dart';
 import '../../../widgets/text/app_text.dart';
 import '../../auth/view/login_page.dart';
@@ -17,11 +18,13 @@ class PredictionHomescreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isSelected = ref.watch(musicFileProvider) != null;
+    final hasLogin = ref.watch(tokenManagerProvider).token != null;
     return PlatformScaffold(
       appBar: PlatformAppBar(
-        title: const AppText("Chord Prediction"),
+        title: const AppText("Chord Classification"),
         trailingActions: [
-          AppTextButton(text: "Login", onPressed: () => Get.to(LoginPage()))
+          if (!hasLogin)
+            AppTextButton(text: "Login", onPressed: () => Get.to(LoginPage()))
         ],
       ),
       body: AnimatedSwitcher(

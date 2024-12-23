@@ -7,6 +7,6 @@ final chordPredictionProvider = FutureProviderFamily((ref, File file) async{
   final predictedData =
       await ref.read(chordPredictionRepoProvider).getPredictionData(file);
 
-  ref.read(predictedDataProvider.notifier).state = predictedData;
+  ref.read(chordPredictionNotifier).updatePredictions(predictedData);
   return predictedData;
 });

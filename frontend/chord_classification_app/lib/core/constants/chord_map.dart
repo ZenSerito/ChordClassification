@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 final Map<String, Color> chordToColor = {
-  'C': const Color(0xFFFF0000),
+  'C':  Colors.redAccent,
   'Cm': Colors.redAccent,
   'C#': const Color(0xFFFF6600),
   'C#m': const Color(0xFFCC5200),

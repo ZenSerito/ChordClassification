@@ -14,7 +14,7 @@ class AppName extends StatelessWidget {
       child: GradientText(
           gradient:
               const LinearGradient(colors: [Colors.teal, AppColors.primary]),
-          text: "Chord Prediction",
+          text: "Chord Classification",
           fontSize: fontsize),
     );
   }

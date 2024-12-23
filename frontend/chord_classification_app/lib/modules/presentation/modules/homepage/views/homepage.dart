@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-
-import '../../../../../core/configs/app_colors.dart';
 import '../../../../../core/extensions/extensions.dart';
 import '../../../../../core/utils/app_icons.dart';
 import '../../../widgets/buttons/icon_buttons.dart';
@@ -31,9 +29,8 @@ class _HomepageState extends State<Homepage> {
         },
         material: (context, platform) => MaterialNavBarData(
             showUnselectedLabels: false,
-            height: 45.ht,
+            height: 42.ht,
             selectedFontSize: 10.st,
-            backgroundColor: AppColors.transparent,
             showSelectedLabels: true,
             elevation: 0),
         items: [

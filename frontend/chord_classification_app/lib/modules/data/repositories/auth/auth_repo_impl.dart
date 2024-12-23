@@ -24,6 +24,7 @@ class AuthRepoImpl implements AuthRepo {
     } on DioException catch (e) {
       final response = e.response;
       final message = response?.data['detail'];
+      print("hello $e");
       if (message != null) {
         Get.snackbar(message);
       } else {
@@ -41,6 +42,7 @@ class AuthRepoImpl implements AuthRepo {
     } on DioException catch (e) {
       final response = e.response;
       final message = response?.data['detail'];
+      print("hello $e");
       if (message != null) {
         Get.snackbar(message);
       } else {

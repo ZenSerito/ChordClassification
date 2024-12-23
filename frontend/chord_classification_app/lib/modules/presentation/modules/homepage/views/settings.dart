@@ -10,6 +10,8 @@ import '../../../../injection_container.dart';
 import '../../../widgets/buttons/app_buttons.dart';
 import '../../../widgets/listtile/app_list_tile.dart';
 import '../../../widgets/text/app_text.dart';
+import '../../auth/view/login_page.dart';
+import '../../chord_prediction/providers/music_notifier_provider.dart';
 import '../../splash_screen/view/splash_screen.dart';
 import '../widgets/setting_listtile.dart';
 import 'base_url_change_view.dart';
@@ -55,17 +57,31 @@ class SettingsPage extends StatelessWidget {
               final themeNotifier = ref.watch(themeNotifierProvider);
               return AppSwitchListTile(
                   title: themeNotifier.isDark
-                      ? "Enable Light mode"
+                      ? "Disable Dark mode"
                       : "Enable Dark mode",
                   value: themeNotifier.isDark,
                   onChanged: (p0) => themeNotifier.toggleTheme());
             },
           ),
           Spacer(),
-          AppButton(
-              onTap: () => Get.offAll(SplashScreen()),
-              text: "Log Out",
-              buttonColor: AppColors.red),
+          Consumer(
+            builder: (context, ref, child) {
+              final hasLogin = ref.watch(tokenManagerProvider).token != null;
+              return AppButton(
+                  onTap: () {
+                    ref.invalidate(chordPredictionNotifier);
+                    ref.invalidate(musicFileProvider);
+                    if (hasLogin) {
+                      ref.read(tokenManagerProvider).updateToken(null);
+                      Get.offAll(const SplashScreen());
+                      return;
+                    }
+                    Get.to(LoginPage());
+                  },
+                  text: hasLogin ? "Log Out" : "Log In",
+                  buttonColor: hasLogin ? AppColors.red : AppColors.primary);
+            },
+          )
         ]),
       ),
     );

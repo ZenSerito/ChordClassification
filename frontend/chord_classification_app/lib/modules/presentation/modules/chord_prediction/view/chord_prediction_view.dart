@@ -4,11 +4,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../core/extensions/extensions.dart';
 import '../../../../../core/services/get.dart';
 import '../../../widgets/audio_players/audio_player.dart';
-import '../../../widgets/buttons/app_buttons.dart';
+import '../../../widgets/error_handler/error_button.dart';
 import '../../../widgets/progressindicators/app_progress_indicators.dart';
+import '../../../widgets/text/app_text.dart';
 import '../providers/chord_prediction_provider.dart';
 import '../providers/music_notifier_provider.dart';
 import 'graph_view.dart';
+import 'prediction_grid_view.dart';
 
 class ChordPredictionView extends ConsumerWidget {
   const ChordPredictionView({super.key});
@@ -22,17 +24,24 @@ class ChordPredictionView extends ConsumerWidget {
         padding: 10.allPad,
         physics: Get.scrollPhysics,
         children: [
-          AudioPlayer(key: Get.key(audioFile), file: audioFile),
-          10.verticalGap,
+          AudioPlayer(key: Get.key(audioFile)),
           chordPrediction.when(
               skipLoadingOnRefresh: false,
-              error: (error, stackTrace) => AppButton(
-                  onTap: () => ref.invalidate(chordPredictionProvider),
-                  text: "Reload"),
+              error: (error, stackTrace) =>
+                  ErrorButton(provider: chordPredictionProvider(audioFile)),
               loading: () => Center(child: AppProgressIndicator()),
               data: (predictions) {
-                return GraphView(predictions);
-              })
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    GraphView(predictions),
+                    5.verticalGap,
+                    AppText("Chords"),
+                    5.verticalGap,
+                    PredictionGridView()
+                  ],
+                );
+              }),
         ]);
   }
 }
